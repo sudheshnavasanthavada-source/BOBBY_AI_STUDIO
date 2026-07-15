@@ -7,7 +7,7 @@ def save_file(filename, content):
 
 
 print("==============================")
-print("🤖 BOBBY AI STUDIO v1.5")
+print("🤖 BOBBY AI STUDIO v1.6")
 print("==============================")
 
 print("1. Generate Story Idea")
@@ -16,6 +16,7 @@ print("3. AI Story Generator")
 print("4. Cinematic Prompt Generator")
 print("5. Exit")
 print("6. View Saved Creations")
+print("7. Add AI Memory")
 
 
 choice = input("Choose an option: ")
@@ -64,3 +65,11 @@ elif choice == "6":
     file = open("prompts.txt", "r")
     print(file.read())
     file.close()
+elif choice == "7":
+    memory = input("Enter memory information: ")
+
+    file = open("memory.txt", "a")
+    file.write(memory + "\n")
+    file.close()
+
+    print("🧠 Memory saved successfully!")
