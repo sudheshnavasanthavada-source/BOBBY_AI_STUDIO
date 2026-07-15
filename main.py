@@ -7,7 +7,7 @@ def save_file(filename, content):
 
 
 print("==============================")
-print("🤖 BOBBY AI STUDIO v1.6")
+print("🤖 BOBBY AI STUDIO v1.7")
 print("==============================")
 
 print("1. Generate Story Idea")
@@ -17,6 +17,7 @@ print("4. Cinematic Prompt Generator")
 print("5. Exit")
 print("6. View Saved Creations")
 print("7. Add AI Memory")
+print("8. Search AI Memory")
 
 
 choice = input("Choose an option: ")
@@ -73,3 +74,34 @@ elif choice == "7":
     file.close()
 
     print("🧠 Memory saved successfully!")
+elif choice == "8":
+    search = input("Enter memory to search: ")
+
+    file = open("memory.txt", "r")
+    memories = file.readlines()
+    file.close()
+
+    found = False
+
+    for memory in memories:
+        if search.lower() in memory.lower():
+            print("🔍 Found:")
+            print(memory)
+            found = True
+
+    if found == False:
+        print("❌ Memory not found")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
