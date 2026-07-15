@@ -7,7 +7,7 @@ def save_file(filename, content):
 
 
 print("==============================")
-print("🤖 BOBBY AI STUDIO v1.4")
+print("🤖 BOBBY AI STUDIO v1.5")
 print("==============================")
 
 print("1. Generate Story Idea")
@@ -15,6 +15,8 @@ print("2. Create AI Prompt")
 print("3. AI Story Generator")
 print("4. Cinematic Prompt Generator")
 print("5. Exit")
+print("6. View Saved Creations")
+
 
 choice = input("Choose an option: ")
 
@@ -50,3 +52,15 @@ elif choice == "4":
     save_file("prompts.txt", prompt)
 elif choice == "5":
     print("Goodbye Bobby! 🚀")
+elif choice == "6":
+    print("📂 Loading Saved Creations...")
+
+    print("\n--- SAVED STORIES ---")
+    file = open("stories.txt", "r")
+    print(file.read())
+    file.close()
+
+    print("\n--- SAVED PROMPTS ---")
+    file = open("prompts.txt", "r")
+    print(file.read())
+    file.close()
