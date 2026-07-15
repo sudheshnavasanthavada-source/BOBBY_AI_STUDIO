@@ -7,7 +7,7 @@ def save_file(filename, content):
 
 
 print("==============================")
-print("🤖 BOBBY AI STUDIO v1.8")
+print("🤖 BOBBY AI STUDIO v1.9")
 print("==============================")
 
 print("1. Generate Story Idea")
@@ -19,6 +19,7 @@ print("6. View Saved Creations")
 print("7. Add AI Memory")
 print("8. Search AI Memory")
 print("9. Add Project Notes")
+print("10. View AI Dashboard")
 
 
 choice = input("Choose an option: ")
@@ -100,6 +101,22 @@ elif choice == "9":
     file.close()
 
     print("📝 Note saved successfully!")
+elif choice == "10":
+    print("==============================")
+    print("🤖 BOBBY AI STUDIO DASHBOARD")
+    print("==============================")
+
+    stories = len(open("stories.txt").readlines())
+    prompts = len(open("prompts.txt").readlines())
+    memories = len(open("memory.txt").readlines())
+    notes = len(open("notes.txt").readlines())
+
+    print("📖 Stories Created:", stories)
+    print("🎬 Prompts Created:", prompts)
+    print("🧠 Memories Saved:", memories)
+    print("📝 Notes Added:", notes)
+
+    print("🚀 Status: AI Studio Active")
 
 
 
