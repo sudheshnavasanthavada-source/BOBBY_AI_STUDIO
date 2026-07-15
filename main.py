@@ -1,10 +1,11 @@
 print("==============================")
-print("🤖 BOBBY AI STUDIO v1.1")
+print("🤖 BOBBY AI STUDIO v1.2")
 print("==============================")
 
 print("1. Generate Story Idea")
 print("2. Create AI Prompt")
-print("3. Exit")
+print("3. AI Story Generator")
+print("4. Exit")
 
 choice = input("Choose an option: ")
 
@@ -17,7 +18,10 @@ elif choice == "2":
     print("Create a cinematic AI scene of a futuristic city.")
 
 elif choice == "3":
-    print("Goodbye Bobby! 🚀")
+    topic = input("Enter a story topic: ")
+    print("✨ Creating story...")
+    print("Story:")
+    print("In the future, " + topic + " changed the world with AI.")
 
-else:
-    print("Invalid option. Try again.")
+elif choice == "4":
+    print("Goodbye Bobby! 🚀")
