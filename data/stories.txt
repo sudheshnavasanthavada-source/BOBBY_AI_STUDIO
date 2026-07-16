@@ -1,0 +1,4 @@
+{'Title': 'Enter story title:', 'Genre': 'META ALPHA: AWAKENING', 'Idea': ''}
+{'Title': 'META ALPHA: AWAKENING', 'Genre': 'Sci-Fi', 'Idea': 'A futuristic AI war where humans and advanced machines fight for control of the universe.'}
+{'Title': 'META ALPHA Generated Story', 'Genre': 'Sci-Fi', 'Idea': 'A futuristic AI battle between humans and machines.'}
+{'Title': 'META ALPHA Generated Story', 'Genre': 'Sci-Fi', 'Idea': 'A futuristic AI war where humans and machines fight for control.'}
