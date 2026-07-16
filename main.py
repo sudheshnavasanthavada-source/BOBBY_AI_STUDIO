@@ -63,27 +63,18 @@ def workflow_menu():
 
 
         if choice == "1":
-
             workflow.create_workflow()
 
-
         elif choice == "2":
-
             workflow.view_workflows()
 
-
         elif choice == "3":
-
             workflow.run_workflow()
 
-
         elif choice == "4":
-
             break
 
-
         else:
-
             print("Invalid choice!")
 
 
@@ -97,77 +88,49 @@ def main():
 
     while True:
 
-
         show_menu()
-
 
         choice = input("Choose option: ")
 
 
-
         if choice == "1":
-
             stories.story_menu()
 
-
         elif choice == "2":
-
             prompts.prompt_menu()
 
-
         elif choice == "3":
-
             memory.memory_menu()
 
-
         elif choice == "4":
-
             notes.notes_menu()
 
-
         elif choice == "5":
-
             files.file_menu()
 
-
         elif choice == "6":
-
             ai_tools.ai_tools_menu()
 
-
         elif choice == "7":
-
             settings.settings_menu()
 
-
         elif choice == "8":
-
             workflow_menu()
 
-
         elif choice == "9":
-
             security.security_menu()
 
-
         elif choice == "10":
-
             pro_foundation.pro_menu()
 
-
         elif choice == "11":
-
             print("\nClosing BOBBY AI STUDIO...")
-
             break
 
-
         else:
-
             print("Invalid choice! Try again.")
 
 
 
 if __name__ == "__main__":
-
     main()
