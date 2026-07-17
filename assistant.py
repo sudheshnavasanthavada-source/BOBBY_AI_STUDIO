@@ -1,132 +1,139 @@
-# ============================================
-# BOBBY AI STUDIO v3.2
-# BOBBY ASSISTANT ENGINE
-# ============================================
+# ==========================================
+# 🤖 BOBBY ASSISTANT v5.2
+# AI CORE CONNECTED
+# ==========================================
 
-import datetime
+import customtkinter as ctk
 
-
-class BobbyAssistant:
-
-    def __init__(self):
-
-        self.name = "BOBBY Assistant"
-
-        self.version = "v3.2"
-
-        print("\n🧠 BOBBY Assistant Loading...")
-        print("🤖 Assistant Online!")
-        print("✅ Ready to help!\n")
-
-
-    def get_response(self, message):
-
-        message = message.lower()
-
-
-        # Greetings
-
-        if "hello" in message or "hi" in message:
-
-            return (
-                "Hello! 👋\n"
-                "I am BOBBY Assistant v3.2."
-            )
-
-
-        # Identity
-
-        elif "who are you" in message:
-
-            return (
-                "I am BOBBY Assistant 🤖\n"
-                "The intelligent assistant inside BOBBY AI STUDIO."
-            )
-
-
-        # Project
-
-        elif "bobby ai studio" in message:
-
-            return (
-                "BOBBY AI STUDIO is a personal AI software project "
-                "with AI Brain, Memory Engine, Creative Tools and future AI models."
-            )
-
-
-        # META ALPHA
-
-        elif "meta alpha" in message:
-
-            return (
-                "META ALPHA is a futuristic sci-fi universe "
-                "created inside BOBBY AI STUDIO 🎬"
-            )
-
-
-        # Time
-
-        elif "time" in message:
-
-            return (
-                "Current system time: "
-                + str(datetime.datetime.now())
-            )
-
-
-        # Help
-
-        elif "help" in message:
-
-            return (
-                "I can help with:\n"
-                "• BOBBY AI STUDIO\n"
-                "• META ALPHA\n"
-                "• Project information\n"
-                "• General commands"
-            )
-
-
-        # Default
-
-        else:
-
-            return (
-                "I am still learning 🧠\n"
-                "Future versions will include advanced AI models."
-            )
-
-
-
-# ============================================
-# Assistant Menu
-# ============================================
 
 def assistant_menu():
 
-    assistant = BobbyAssistant()
+    print("🤖 ASSISTANT MODULE STARTED")
 
 
-    while True:
+    window = ctk.CTkToplevel()
 
-        print("============================")
-        print("     🤖 BOBBY ASSISTANT v3.2")
-        print("============================")
-        print("Type 'exit' to return")
-        print("============================")
+    window.title("🤖 BOBBY Assistant v5.2")
+
+    window.geometry("900x650")
 
 
-        user = input("\nYou: ")
+    # AI CORE CONNECTION
+
+    try:
+        from ai_core import process_command
+        print("🧠 AI CORE CONNECTED")
+
+    except Exception as e:
+        print("❌ AI CORE ERROR:", e)
+
+        def process_command(command):
+            return "AI Core not available"
 
 
-        if user.lower() == "exit":
 
-            print("\nReturning to BOBBY AI STUDIO...")
-            break
+    # =========================
+    # TITLE
+    # =========================
+
+    title = ctk.CTkLabel(
+        window,
+        text="🤖 BOBBY ASSISTANT v5.2",
+        font=("Arial",32,"bold")
+    )
+
+    title.pack(
+        pady=25
+    )
 
 
-        response = assistant.get_response(user)
+    # =========================
+    # CHAT BOX
+    # =========================
+
+    chat_box = ctk.CTkTextbox(
+        window,
+        width=750,
+        height=350,
+        font=("Arial",18)
+    )
+
+    chat_box.pack(
+        pady=20
+    )
 
 
-        print("\nBOBBY AI:")
-        print(response)
+    chat_box.insert(
+        "end",
+        "🤖 BOBBY AI: AI Core Connected 🚀\n\n"
+    )
+
+
+
+    # =========================
+    # COMMAND FUNCTION
+    # =========================
+
+    def send_command():
+
+        command = entry.get()
+
+
+        if command:
+
+            chat_box.insert(
+                "end",
+                "👤 You: "
+                + command
+                + "\n"
+            )
+
+
+            response = process_command(command)
+
+
+            chat_box.insert(
+                "end",
+                "🤖 BOBBY AI: "
+                + str(response)
+                + "\n\n"
+            )
+
+
+            entry.delete(
+                0,
+                "end"
+            )
+
+
+
+    # =========================
+    # INPUT BOX
+    # =========================
+
+    entry = ctk.CTkEntry(
+        window,
+        width=600,
+        height=40,
+        placeholder_text="Enter AI command..."
+    )
+
+    entry.pack(
+        pady=10
+    )
+
+
+
+    send_button = ctk.CTkButton(
+        window,
+        text="🚀 Execute",
+        height=40,
+        command=send_command
+    )
+
+    send_button.pack(
+        pady=10
+    )
+
+
+    print("✅ ASSISTANT v5.2 READY")

@@ -1,144 +1,206 @@
-# =====================================
-# BOBBY AI STUDIO v2.8
-# Prompt Engineering Center
-# =====================================
+# ============================================
+# BOBBY AI STUDIO v5.7
+# PROMPT ENGINEERING CENTER
+# ============================================
 
 import json
+import os
 from datetime import datetime
 
 
-FILE = "data/prompts.json"
+PROMPT_FILE = "data/prompts.json"
+
+
+# ============================================
+# Setup Storage
+# ============================================
+
+def setup_prompts():
+
+    if not os.path.exists("data"):
+        os.makedirs("data")
+
+    if not os.path.exists(PROMPT_FILE):
+
+        with open(PROMPT_FILE, "w") as file:
+            json.dump([], file)
+
 
 
 def load_prompts():
 
-    try:
+    setup_prompts()
 
-        with open(FILE, "r") as file:
-            return json.load(file)
-
-    except:
-
-        return []
+    with open(PROMPT_FILE, "r") as file:
+        return json.load(file)
 
 
 
-def save_prompts(data):
+def save_prompts(prompts):
 
-    with open(FILE, "w") as file:
-        json.dump(data, file, indent=4)
+    with open(PROMPT_FILE, "w") as file:
+        json.dump(prompts, file, indent=4)
 
 
+
+# ============================================
+# Create AI Prompt
+# ============================================
 
 def create_prompt():
 
     print("\n--- CREATE AI PROMPT ---")
 
     title = input("Prompt title: ")
-    category = input("Category (Image/Video/Character/Story): ")
-    idea = input("Your idea: ")
 
-    prompts = load_prompts()
+    category = input(
+        "Category (Image/Video/Character/Story): "
+    )
 
-    new_prompt = {
+    idea = input(
+        "Your idea: "
+    )
+
+
+    prompt = {
 
         "title": title,
+
         "category": category,
+
         "idea": idea,
+
         "date": str(datetime.now())
 
     }
 
-    prompts.append(new_prompt)
+
+    prompts = load_prompts()
+
+    prompts.append(prompt)
 
     save_prompts(prompts)
+
 
     print("\n✅ Prompt saved successfully!")
 
 
 
-# 🔥 v2.8 AUTOMATION FUNCTION
-def auto_create_prompt(title, category, idea):
-
-    prompts = load_prompts()
-
-    new_prompt = {
-
-        "title": title,
-        "category": category,
-        "idea": idea,
-        "date": str(datetime.now())
-
-    }
-
-    prompts.append(new_prompt)
-
-    save_prompts(prompts)
-
-    print("✅ Automated Prompt Created!")
-
-
+# ============================================
+# View Saved Prompts
+# ============================================
 
 def view_prompts():
 
     print("\n--- SAVED PROMPTS ---")
 
+
     prompts = load_prompts()
 
 
-    if prompts:
-
-        for prompt in prompts:
-
-            print("\nTitle:", prompt["title"])
-            print("Category:", prompt["category"])
-            print("Idea:", prompt["idea"])
-            print("Date:", prompt["date"])
-
-
-    else:
+    if not prompts:
 
         print("No prompts found.")
+        return
 
 
+    for prompt in prompts:
+
+        print("\n---------------------")
+
+        print("Title:", prompt["title"])
+
+        print("Category:", prompt["category"])
+
+        print("Idea:", prompt["idea"])
+
+        print("Date:", prompt["date"])
+
+
+
+
+# ============================================
+# Smart Search Prompt
+# ============================================
 
 def search_prompt():
 
     print("\n--- SEARCH PROMPT ---")
 
-    keyword = input("Enter title: ")
+
+    search = input(
+        "Enter title: "
+    ).lower()
+
 
     prompts = load_prompts()
 
 
+    found = False
+
+
     for prompt in prompts:
 
-        if prompt["title"] == keyword:
 
-            print(prompt)
+        if search in prompt["title"].lower():
 
-            return
+            print("\n✅ Prompt Found")
+
+            print("---------------------")
+
+            print("Title:", prompt["title"])
+
+            print("Category:", prompt["category"])
+
+            print("Idea:", prompt["idea"])
+
+            print("Date:", prompt["date"])
 
 
-    print("Prompt not found!")
+            found = True
 
 
+
+    if not found:
+
+        print("\n❌ Prompt not found!")
+
+
+
+# ============================================
+# ⭐ v5.7 CONNECTOR FUNCTION
+# Used by main.py
+# ============================================
+
+def prompt_generator():
+
+    prompt_menu()
+
+
+
+# ============================================
+# Prompt Menu
+# ============================================
 
 def prompt_menu():
 
     while True:
 
         print("\n============================")
-        print("   PROMPT ENGINEERING v2.3")
+        print("   PROMPT ENGINEERING v5.7")
         print("============================")
+
         print("1. Create Prompt")
         print("2. View Prompts")
         print("3. Search Prompt")
         print("4. Back to Main Menu")
+
         print("============================")
 
 
-        choice = input("Choose option: ")
+        choice = input(
+            "Choose option: "
+        )
 
 
         if choice == "1":
@@ -163,4 +225,4 @@ def prompt_menu():
 
         else:
 
-            print("Invalid choice!")
+            print("❌ Invalid option!")

@@ -1,125 +1,76 @@
-# ============================================
-# BOBBY AI STUDIO v3.5
-# MAIN PROGRAM
-# ============================================
+# BOBBY AI STUDIO v5.7
+# Main Controller
 
-from ai_core import AICore
-from ai_router import AIRouter
-
-
-# ============================================
-# Initialize AI Brain
-# ============================================
-
-brain = AICore()
-router = AIRouter()
+from stories import story_generator
+from prompts import prompt_generator
+from memory import add_memory, view_memory
+from notes import notes_manager
+from recall import show_recall
 
 
-
-# ============================================
-# Main Menu
-# ============================================
-
-def show_menu():
-
-    print("\n" + "=" * 45)
-    print("        🤖 BOBBY AI STUDIO v3.5")
-    print("          🧠 AI CREATIVE HUB")
-    print("=" * 45)
-
-    print("1.  Story Generator")
-    print("2.  Prompt Engineering")
-    print("3.  Memory System")
-    print("4.  Notes")
-    print("5.  File Management")
-    print("6.  AI Tools Hub")
-    print("7.  Settings")
-    print("8.  Workflow Automation")
-    print("9.  Security & Backup")
-    print("10. Pro Foundation")
-    print("11. BOBBY Assistant")
-    print("12. AI Model Center")
-    print("13. META ALPHA Studio")
-    print("14. Voice AI")
-    print("15. Exit")
-
-    print("=" * 45)
-
-
-
-# ============================================
-# Main System Loop
-# ============================================
-
-def main():
-
-    print("\n🚀 Welcome to BOBBY AI STUDIO")
-    print("🧠 AI Brain Foundation Loaded Successfully!")
-    print("⚡ All Systems Ready")
-
+def main_menu():
 
     while True:
 
+        print("\n==============================")
+        print("      BOBBY AI STUDIO v5.7")
+        print("==============================")
 
-        try:
+        print("1. Story Generator")
+        print("2. Prompt Generator")
+        print("3. Memory System")
+        print("4. Notes")
+        print("5. View Memories")
+        print("6. Memory Recall")
+        print("7. Exit")
 
-            show_menu()
-
-
-            choice = input(
-                "Choose option: "
-            ).strip()
-
-
-
-            if choice == "15":
-
-                print("\n👋 Closing BOBBY AI STUDIO...")
-                print("🧠 AI Brain Shutdown Complete.")
-                print("Goodbye Bobby! 🚀\n")
-
-                break
+        choice = input("\nEnter your choice: ")
 
 
+        if choice == "1":
 
-            module_name, function = router.route(choice)
-
-
-
-            if function:
-
-                brain.process(
-                    module_name,
-                    function
-                )
+            story_generator()
 
 
-            else:
+        elif choice == "2":
 
-                print("\n❌ Invalid option!")
+            prompt_generator()
 
 
+        elif choice == "3":
 
-        except KeyboardInterrupt:
+            add_memory()
 
-            print("\n\n⚠ Program interrupted.")
-            print("🧠 AI Brain Shutdown Complete.")
 
+        elif choice == "4":
+
+            notes_manager()
+
+
+        elif choice == "5":
+
+            view_memory()
+
+
+        elif choice == "6":
+
+            keyword = input("\nSearch memory: ")
+
+            show_recall(keyword)
+
+
+        elif choice == "7":
+
+            print("\n🚀 Closing BOBBY AI STUDIO...")
             break
 
 
+        else:
 
-        except Exception as error:
-
-            print("\n❌ System Error:")
-            print(error)
+            print("\n❌ Invalid choice. Try again.")
 
 
-
-# ============================================
-# Start Application
-# ============================================
 
 if __name__ == "__main__":
 
-    main()
+    main_menu()

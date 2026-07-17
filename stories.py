@@ -1,5 +1,5 @@
 # =====================================
-# BOBBY AI STUDIO v2.8
+# BOBBY AI STUDIO v5.7
 # Story Generator Module
 # =====================================
 
@@ -24,7 +24,7 @@ def create_story():
     print("\n✅ Story saved successfully!")
 
 
-# 🔥 v2.8 AUTOMATION FUNCTION
+# 🔥 v2.8 Automation Function
 def auto_create_story(title, genre, idea):
 
     story = {
@@ -58,6 +58,15 @@ def view_stories():
     except FileNotFoundError:
 
         print("No stories created yet.")
+
+
+
+# ⭐ NEW v5.7 CONNECTOR FUNCTION
+# Used by main.py
+
+def story_generator():
+
+    story_menu()
 
 
 
