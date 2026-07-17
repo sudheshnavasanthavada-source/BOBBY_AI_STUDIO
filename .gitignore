@@ -2,8 +2,26 @@
 __pycache__/
 *.pyc
 
-# Backups
-data/backups/
+# Virtual environment
+venv/
+env/
+
+# IDE files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# User data
+data/memories.json
+data/tasks.json
 
 # Temporary files
-*.tmp
+*.log
